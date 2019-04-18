@@ -14,4 +14,4 @@ services:
       - /opt/docker/rabbitmq/config:/etc/rabbitmq
       - /opt/docker/rabbitmq/logs:/var/log/rabbitmq
       - /opt/docker/home:/var/lib/rabbitmq
-    command: rabbitmq-plugins enable --offline rabbitmq_mqtt rabbitmq_federation_management rabbitmq_stomp
+    command: mkdir /etc/rabbitmq/ rabbitmq-plugins enable --offline rabbitmq_mqtt rabbitmq_federation_management rabbitmq_stomp
