@@ -5,8 +5,8 @@ services:
     privileged: true
     container_name: MyRabbitmq
     environment:
-      - RABBITMQ_DEFAULT_USER=dev
-      - RABBITMQ_DEFAULT_PASS=dev
+#      - RABBITMQ_DEFAULT_USER=dev
+#      - RABBITMQ_DEFAULT_PASS=dev
       - RABBITMQ_ERLANG_COOKIE='secret cookie here'
       - RABBITMQ_NODENAME=rabbit@MyRabbitmq
     volumes:
@@ -18,25 +18,3 @@ services:
     ports:
       - 15672:15672
       - 5672:5672
-    #    command: rabbitmq-plugins enable  --offline rabbitmq_mqtt rabbitmq_federation_management rabbitmq_stomp
-
-    #  rabbitmq-management:
-    #        build: ./
-    #    image: rabbitmq:management
-    #    container_name: MyRabbitmqManagement
-    #    privileged: true
-    #    environment:
-    #      - RABBITMQ_DEFAULT_USER=dev
-    #      - RABBITMQ_DEFAULT_PASS=dev
-#    volumes:
-#      - /e/docker/rabbitmq/config:/etc/rabbitmq
-#      - /e/docker/rabbitmq/logs:/var/log/rabbitmq
-#      - /e/docker/rabbitmq/home/mnesia:/var/lib/rabbitmq/mnesia
-#      - /e/docker/rabbitmq/home/schema:/var/lib/rabbitmq/schema
-#      - /e/docker/rabbitmq/home/config:/var/lib/rabbitmq/config
-#    ports:
-#      - 15672:15672
-#      - 5672:5672
-#    command: rabbitmq-plugins enable  --offline rabbitmq_mqtt rabbitmq_federation_management rabbitmq_stomp
-#    depends_on:
-#      - rabbitmq
