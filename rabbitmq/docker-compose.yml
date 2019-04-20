@@ -8,7 +8,7 @@ services:
     environment:
 #      - RABBITMQ_DEFAULT_USER=dev
 #      - RABBITMQ_DEFAULT_PASS=dev
-      - RABBITMQ_ERLANG_COOKIE='secret cookie here'
+      - RABBITMQ_ERLANG_COOKIE='MyRabbitmq secret cookie here'
       - RABBITMQ_NODENAME=rabbit@MyRabbitmq
     volumes:
       - /e/docker/rabbitmq/config:/etc/rabbitmq
