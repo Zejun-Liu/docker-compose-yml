@@ -1,0 +1,44 @@
+version: '3.1'
+services:
+  rabbitmq01:
+    image: bijukunjummen/rabbitmq-server:3.7.0
+    hostname: rabbitmq01
+    container_name: MyRabbitmq01
+    environment:
+      - RABBITMQ_ERLANG_COOKIE='secret cookie here'
+    ports:
+      - 15672:15672
+      - 5672:5672
+  rabbitmq02:
+    image: bijukunjummen/rabbitmq-server:3.7.0
+    hostname: rabbitmq02
+    privileged: true
+    container_name: MyRabbitmq02
+    links:
+      - rabbitmq01
+    depends_on:
+      - rabbitmq01
+    environment:
+      - RABBITMQ_ERLANG_COOKIE='secret cookie here'
+      - CLUSTERED=true
+      - CLUSTER_WITH=rabbitmq01
+      - RAM_NODE=true
+    ports:
+      - 15673:15672
+      - 5673:5672
+  rabbitmq03:
+    image: bijukunjummen/rabbitmq-server:3.7.0
+    hostname: rabbitmq03
+    container_name: MyRabbitmq03
+    depends_on:
+      - rabbitmq01
+    links:
+      - rabbitmq01
+      - rabbitmq02
+    environment:
+      - RABBITMQ_ERLANG_COOKIE='secret cookie here'
+      - CLUSTERED=true
+      - CLUSTER_WITH=rabbitmq01
+    ports:
+      - 15674:15672
+      - 5674:5672

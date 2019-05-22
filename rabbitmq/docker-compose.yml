@@ -1,10 +1,9 @@
 version: '3.1'
 services:
   rabbitmq:
-    image: rabbitmq
-    privileged: true
+    image: rabbitmq:3.7-management
     container_name: MyRabbitmq
-    restart: always
+    restart: no
     environment:
 #      - RABBITMQ_DEFAULT_USER=dev
 #      - RABBITMQ_DEFAULT_PASS=dev
@@ -13,9 +12,6 @@ services:
     volumes:
       - /e/docker/rabbitmq/config:/etc/rabbitmq
       - /e/docker/rabbitmq/logs:/var/log/rabbitmq
-      - /e/docker/rabbitmq/home/mnesia:/var/lib/rabbitmq/mnesia
-      - /e/docker/rabbitmq/home/schema:/var/lib/rabbitmq/schema
-      - /e/docker/rabbitmq/home/config:/var/lib/rabbitmq/config
     ports:
       - 15672:15672
       - 5672:5672
