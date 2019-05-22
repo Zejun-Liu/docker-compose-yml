@@ -16,8 +16,6 @@ services:
     container_name: MyRabbitmq02
     links:
       - rabbitmq01
-    depends_on:
-      - rabbitmq01
     environment:
       - RABBITMQ_ERLANG_COOKIE='secret cookie here'
       - CLUSTERED=true
@@ -30,8 +28,6 @@ services:
     image: bijukunjummen/rabbitmq-server:3.7.0
     hostname: rabbitmq03
     container_name: MyRabbitmq03
-    depends_on:
-      - rabbitmq01
     links:
       - rabbitmq01
       - rabbitmq02
