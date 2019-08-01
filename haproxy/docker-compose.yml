@@ -9,5 +9,7 @@ services:
     privileged: true
     expose:
       - 80
+      - 9000
     ports:
       - 80:80
+      - 9000:9000
