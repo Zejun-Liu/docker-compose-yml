@@ -3,7 +3,7 @@ services:
   haproxy:
     image: haproxy
     container_name: haproxy
-    restart: no
+#    restart: always
     volumes:
       - ./conf:/usr/local/etc/haproxy
     privileged: true
