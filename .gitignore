@@ -181,3 +181,6 @@ hs_err_pid*
 /target
 /.project
 /.classpath
+
+mysql/data/*
+redis/data/*
