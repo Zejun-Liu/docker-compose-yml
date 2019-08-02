@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  mysql-master:
+    build:
+      context: ./master
+    container_name: mysql_master
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    links:
+      - mysql-slave
+    ports:
+      - 3306:3306
+    hostname: mysql-master
+  mysql-slave:
+    build:
+      context: ./slave
+    container_name: mysql_slave
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+    ports:
+      - 3307:3306
+    hostname: mysql-slave
+
+#    https://juejin.im/post/5b3a24dde51d4555b3360253
