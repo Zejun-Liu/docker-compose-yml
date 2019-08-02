@@ -10,8 +10,8 @@ services:
       - RABBITMQ_ERLANG_COOKIE='MyRabbitmq secret cookie here'
       - RABBITMQ_NODENAME=rabbit@MyRabbitmq
     volumes:
-      - /e/docker/rabbitmq/config:/etc/rabbitmq
-      - /e/docker/rabbitmq/logs:/var/log/rabbitmq
+      - ./config:/etc/rabbitmq
+      - ./logs:/var/log/rabbitmq
     ports:
       - 15672:15672
       - 5672:5672
