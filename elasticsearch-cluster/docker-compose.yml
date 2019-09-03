@@ -1,0 +1,39 @@
+version: '3.1'
+services:
+  elasticsearch:
+    image: elasticsearch
+    container_name: elasticsearch_master
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/master:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+    networks:
+      - esnet
+
+  elasticsearch_slaver:
+    image: elasticsearch
+    container_name: elasticsearch_slaver_1
+    environment:
+      - cluster.name=docker-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - "discovery.zen.ping.unicast.hosts=elasticsearch_master"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./data/slaver:/usr/share/elasticsearch/data
+    networks:
+      - esnet
+
+networks:
+  esnet:
