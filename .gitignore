@@ -184,3 +184,4 @@ hs_err_pid*
 
 mysql/data/*
 redis/data/*
+elasticsearch/data/*
