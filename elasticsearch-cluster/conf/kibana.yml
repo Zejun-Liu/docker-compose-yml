@@ -1,0 +1,7 @@
+server:
+  port: 5601
+  host: 0.0.0.0
+  name: kibana
+
+elasticsearch:
+  url: http://es_master:9200

@@ -4,6 +4,7 @@ services:
     image: elasticsearch
     container_name: elasticsearch
     volumes:
+      - ./conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./data:/usr/share/elasticsearch/data
     environment:
       - discovery.type=single-node
@@ -13,9 +14,7 @@ services:
       - 9300:9300
 
   head:
-    image: salgat/elasticsearch-head
+    image: mobz/elasticsearch-head:5
     container_name: elasticsearch-head
     ports:
       - 9100:9100
-    links:
-      - elasticsearch
