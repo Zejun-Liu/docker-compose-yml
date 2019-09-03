@@ -11,3 +11,11 @@ services:
     ports:
       - 9200:9200
       - 9300:9300
+
+  head:
+    image: salgat/elasticsearch-head
+    container_name: elasticsearch-head
+    ports:
+      - 9100:9100
+    links:
+      - elasticsearch
