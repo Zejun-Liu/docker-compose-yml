@@ -1,7 +1,7 @@
 version: '3.1'
 services:
   jenkins:
-    image: jenkins
+    image: jenkins/jenkins:lts
     container_name: jenkins
     privileged: true
     ports:

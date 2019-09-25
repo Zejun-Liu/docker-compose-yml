@@ -11,5 +11,6 @@ mysql/data/*
 redis/data/*
 elasticsearch/data/*
 elasticsearch-cluster/data/*
+jenkins/data/*
 *.bak
 DockerDesktop.vhdx
