@@ -1,11 +1,13 @@
 version: '3.1'
 services:
   elasticsearch:
-    image: elasticsearch
+    build: .
+#    image: elasticsearch
     container_name: elasticsearch
     volumes:
       - ./conf/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./data:/usr/share/elasticsearch/data
+#      - ./plugins:/usr/share/elasticsearch/plugins
     environment:
       - discovery.type=single-node
       - ES_JAVA_OPTS=-Xms128m -Xmx128m

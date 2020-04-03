@@ -1,7 +1,8 @@
 version: '3.1'
 services:
   elasticsearch:
-    image: elasticsearch
+    build: .
+#    image: elasticsearch
     container_name: es_master
     environment:
       - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
@@ -15,13 +16,16 @@ services:
       - esnet
 
   elasticsearch_slaver:
-    image: elasticsearch
+    build: .
     container_name: es_slaver
     environment:
       - "ES_JAVA_OPTS=-Xms128m -Xmx128m"
     volumes:
       - ./conf/slaver/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
       - ./data/slaver:/usr/share/elasticsearch/data
+    ports:
+      - 9201:9200
+      - 9301:9300
     networks:
       - esnet
 

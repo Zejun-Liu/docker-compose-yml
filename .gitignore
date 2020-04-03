@@ -14,3 +14,4 @@ elasticsearch-cluster/data/*
 jenkins/data/*
 *.bak
 DockerDesktop.vhdx
+DockerDesktop*
